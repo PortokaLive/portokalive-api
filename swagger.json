@@ -1,0 +1,311 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "version": "1.0.0",
+      "title": "IFSC Web API Server",
+      "license": {
+        "name": "MIT"
+      }
+    },
+    "host": "localhost:5000",
+    "basePath": "/api/v1",
+    "schemes": [
+      "http"
+    ],
+    "consumes": [
+      "application/json"
+    ],
+    "produces": [
+      "application/json"
+    ],
+    "paths": {
+      "/user/register": {
+        "post": {
+          "summary": "Register a user",
+          "operationId": "registerUser",
+          "tags": [
+            "user"
+          ],
+          "parameters": [
+            {
+              "name": "Register User - Body Content",
+              "in": "body",
+              "required": true,
+              "description": "Request Content",
+              "type": "string",
+              "value":"{\n\t\"company\":\"D-Corp\",\n\t\"username\":\"User1\",\n\t\"fullname\":\"Kevin Chang\",\n\t\"password\":\"password\",\n\t\"passwordConfirm\":\"password\"\n}"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "{\n    \"_id\": \"***Sample ID***\",\n    \"company\": \"D-Corp\",\n    \"username\": \"User1\",\n    \"fullname\": \"Kevin Chang\",\n    \"password\": \"***Sample Hashed Password***\",\n    \"__v\": 0\n}"
+            }
+          }
+        }
+      },
+      "/user/login": {
+        "post": {
+          "summary": "Login a user",
+          "operationId": "loginUser",
+          "tags": [
+            "user"
+          ],
+          "parameters": [
+            {
+              "name": "Login User - Body Content",
+              "in": "body",
+              "required": true,
+              "description": "Request Content",
+              "type": "string",
+              "value":"{\n\t\"company\":\"D-Corp\",\n\t\"username\":\"User1\",\n\t\"password\":\"***Sample Password***\"\n}"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "{\n    \"success\": true,\n    \"token\": \"Bearer ***Sample Web Token***\"\n}"
+            }
+          }
+        }
+      },
+      "/user/me": {
+        "get": {
+          "summary": "Get a user info",
+          "operationId": "getUser",
+          "tags": [
+            "user"
+          ],
+          "parameters": [
+            {
+              "name": "Authorization",
+              "in": "header",
+              "required": true,
+              "description": "Request Content",
+              "type": "string",
+              "value":"Bearer ***Sample Web Token***"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "{\n    \"_id\": \"5d902a37d6304906b3e2d8db\",\n    \"company\": \"C-Corp\",\n    \"username\": \"User1\",\n    \"fullname\": \"Allen Toh\",\n    \"__v\": 0\n}"
+            }
+          }
+        },
+        "put": {
+            "summary": "Update a user info",
+            "operationId": "updateUser",
+            "tags": [
+              "user"
+            ],
+            "parameters": [
+              {
+                "name": "Authorization",
+                "in": "header",
+                "required": true,
+                "description": "Request Content",
+                "type": "string",
+                "value":"Bearer ***Sample Web Token***"
+              },
+              {
+                "name": "fullname",
+                "in": "query",
+                "required": true,
+                "description": "Url Query Parameter",
+                "type": "string",
+                "value":"David Toh"
+              },
+              {
+                "name": "password",
+                "in": "query",
+                "required": true,
+                "description": "Url Query Parameter",
+                "type": "string",
+                "value":"***Sample password***"
+              }
+            ],
+            "responses": {
+              "200": {
+                "description": "{\n    \"success\": true,\n    \"result\": {\n        \"fullname\": \"Kevin Toh\",\n        \"password\": \"$2a$10$p2xKBeR05mDOJy6jwW0bM.bVFnpwUMqzLtQGko2sS9L2UutkdNuDC\"\n    }\n}"
+              }
+            }
+          },
+          "patch": {
+            "summary": "Update a user info",
+            "operationId": "updateUser",
+            "tags": [
+              "user"
+            ],
+            "parameters": [
+              {
+                "name": "Authorization",
+                "in": "header",
+                "required": true,
+                "description": "Request Content",
+                "type": "string",
+                "value":"Bearer ***Sample Web Token***"
+              },
+              {
+                "name": "fullname",
+                "in": "query",
+                "required": true,
+                "description": "Url Query Parameter",
+                "type": "string",
+                "value":"David Toh"
+              },
+              {
+                "name": "password",
+                "in": "query",
+                "required": true,
+                "description": "Url Query Parameter",
+                "type": "string",
+                "value":"***Sample password***"
+              }
+            ],
+            "responses": {
+              "200": {
+                "description": "{\n    \"success\": true,\n    \"result\": {\n        \"fullname\": \"Kevin Toh\",\n        \"password\": \"$2a$10$p2xKBeR05mDOJy6jwW0bM.bVFnpwUMqzLtQGko2sS9L2UutkdNuDC\"\n    }\n}"
+              }
+            }
+          },
+          "delete": {
+            "summary": "Delete a user info",
+            "operationId": "deleteUser",
+            "tags": [
+              "user"
+            ],
+            "parameters": [
+              {
+                "name": "Authorization",
+                "in": "header",
+                "required": true,
+                "description": "Request Content",
+                "type": "string",
+                "value":"Bearer ***Sample Web Token***"
+              },
+              {
+                "name": "password",
+                "in": "query",
+                "required": true,
+                "description": "Url Query Parameter",
+                "type": "string",
+                "value":"***Sample password***"
+              }
+            ],
+            "responses": {
+              "200": {
+                "description": "{\n    \"success\": true,\n    \"result\": {\n        \"_id\": \"5d907d2d492e031165eefec8\",\n        \"company\": \"E-Corp\",\n        \"username\": \"User3\",\n        \"fullname\": \"Kevin Toh\",\n        \"password\": \"$2a$10$p2xKBeR05mDOJy6jwW0bM.bVFnpwUMqzLtQGko2sS9L2UutkdNuDC\",\n        \"__v\": 0\n    }\n}"
+              }
+            }
+          }
+      },
+      "/users": {
+        "get": {
+          "summary": "Get the list of user info",
+          "operationId": "listUser",
+          "tags": [
+            "user"
+          ],
+          "parameters": [
+            {
+              "name": "Authorization",
+              "in": "header",
+              "required": true,
+              "description": "Request Content",
+              "type": "string",
+              "value":"Bearer ***Sample Web Token***"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "{\n    \"message\": \"User User1 from Company C-Corp has queried the user list\",\n    \"userlist\": [\n        {\n            \"_id\": \"5d902980d6304906b3e2d8d5\",\n            \"company\": \"A-Corp\",\n            \"username\": \"User1\",\n            \"fullname\": \"Mike Chang\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"5d9029a8d6304906b3e2d8d6\",\n            \"company\": \"A-Corp\",\n            \"username\": \"User2\",\n            \"fullname\": \"Mike Cheng\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"5d9029c5d6304906b3e2d8d7\",\n            \"company\": \"A-Corp\",\n            \"username\": \"User3\",\n            \"fullname\": \"David Chang\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"5d9029e6d6304906b3e2d8d8\",\n            \"company\": \"B-Corp\",\n            \"username\": \"User1\",\n            \"fullname\": \"David Cheng\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"5d902a05d6304906b3e2d8d9\",\n            \"company\": \"B-Corp\",\n            \"username\": \"User2\",\n            \"fullname\": \"Allen Toh\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"5d902a23d6304906b3e2d8da\",\n            \"company\": \"B-Corp\",\n            \"username\": \"User3\",\n            \"fullname\": \"Allen Goh\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"5d902a37d6304906b3e2d8db\",\n            \"company\": \"C-Corp\",\n            \"username\": \"User1\",\n            \"fullname\": \"Allen Toh\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"5d902a49d6304906b3e2d8dc\",\n            \"company\": \"C-Corp\",\n            \"username\": \"User2\",\n            \"fullname\": \"Mike Chang\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"5d902a5ed6304906b3e2d8dd\",\n            \"company\": \"C-Corp\",\n            \"username\": \"User3\",\n            \"fullname\": \"David Toh\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"5d9053acdc197c0bd40695c2\",\n            \"company\": \"D-Corp\",\n            \"username\": \"User1\",\n            \"fullname\": \"Kevin Chang\",\n            \"__v\": 0\n        }\n    ]\n}"
+            }
+          }
+        }
+      },
+      "/users/search": {
+        "get": {
+          "summary": "Search user info list",
+          "operationId": "searchUser",
+          "tags": [
+            "user"
+          ],
+          "parameters": [
+            {
+              "name": "Authorization",
+              "in": "header",
+              "required": true,
+              "description": "Request Content",
+              "type": "string",
+              "value":"Bearer ***Sample Web Token***"
+            },
+            {
+                "name": "method",
+                "in": "query",
+                "required": true,
+                "description": "Url Query Parameter",
+                "type": "string",
+                "value":"find"
+              },
+              {
+                "name": "option",
+                "in": "query",
+                "required": true,
+                "description": "Url Query Parameter",
+                "type": "string",
+                "value":"vanilla"
+              },
+              {
+                "name": "company",
+                "in": "query",
+                "required": true,
+                "description": "Url Query Parameter",
+                "type": "string",
+                "value":"C-Corp"
+              },
+              {
+                "name": "username",
+                "in": "query",
+                "description": "Url Query Parameter",
+                "type": "string",
+                "value":"User1"
+              },
+              {
+                "name": "fullname",
+                "in": "query",
+                "description": "Url Query Parameter",
+                "type": "string",
+                "value":"Mike Chang"
+              }
+          ],
+          "responses": {
+            "200": {
+              "description": "{\n    \"_id\": \"5d902a37d6304906b3e2d8db\",\n    \"company\": \"C-Corp\",\n    \"username\": \"User1\",\n    \"fullname\": \"Allen Toh\",\n    \"__v\": 0\n}"
+            }
+          }
+        }
+      }
+    },
+    "definitions": {
+      "User": {
+        "required": [
+          "username",
+          "fullname",
+          "password",
+          "company"
+        ],
+        "properties": {
+          "username": {
+            "type": "string"
+          },
+          "fullname": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          },
+          "company": {
+              "type": "string"
+          }
+        }
+      }
+    }
+  }

@@ -1,0 +1,31 @@
+{
+  "name": "ams-cim-api",
+  "version": "1.0.0",
+  "description": "AMS CIM API server",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "nodemon server.js"
+  },
+  "author": "m3yevn",
+  "license": "ISC",
+  "dependencies": {
+    "app-root-path": "^2.2.1",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.1.0",
+    "e": "0.0.4",
+    "express": "^4.17.1",
+    "is-empty": "^1.2.0",
+    "jsonwebtoken": "^8.5.1",
+    "lodash": "^4.17.15",
+    "mongoose": "^5.7.1",
+    "morgan": "^1.9.1",
+    "response-time": "^2.3.2",
+    "swagger-ui-express": "^4.1.1",
+    "validator": "^11.1.0",
+    "winston": "^3.2.1",
+    "winston-daily-rotate-file": "^4.1.0"
+  }
+}
