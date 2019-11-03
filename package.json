@@ -1,7 +1,7 @@
 {
-  "name": "ams-cim-api",
+  "name": "orange-live-api",
   "version": "1.0.0",
-  "description": "AMS CIM API server",
+  "description": "Orange Live API Server",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

@@ -1,0 +1,55 @@
+{"message":"::c - - [03/Oct/2019:21:00:51 +0800] Server is listening at 5000","level":"info"}
+{"message":"::c - - [03/Oct/2019:21:10:21 +0800] Server is listening at 5000","level":"info"}
+{"message":"::c - - [03/Oct/2019:21:11:26 +0800] Username User1 at Company E-Corp already exists","level":"error"}
+{"message":"::1 - - [03/Oct/2019:21:11:26 +0800] \"POST /api/v1/user/register HTTP/1.1\" 400 95 \"http://localhost:3003/register\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36\"\n","level":"info"}
+{"message":"::c - - [03/Oct/2019:21:12:39 +0800] Username User1 at Company E-Corp already exists","level":"error"}
+{"message":"::1 - - [03/Oct/2019:21:12:39 +0800] \"POST /api/v1/user/register HTTP/1.1\" 400 95 \"-\" \"PostmanRuntime/7.15.2\"\n","level":"info"}
+{"message":"::c - - [03/Oct/2019:21:12:58 +0800] User is registered--{\"_id\":\"5d95f3da32e38d11debec7e1\",\"company\":\"E-Corp\",\"username\":\"User4\",\"fullname\":\"Kevin Moe\",\"password\":\"$2a$10$WBHEvtTnXGzGv3rvK.N29uoSJhoOXZDmvU7dvm67JQqWPzNcCiVdy\",\"__v\":0}","level":"info"}
+{"message":"::1 - - [03/Oct/2019:21:12:58 +0800] \"POST /api/v1/user/register HTTP/1.1\" 200 177 \"http://localhost:3003/register\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36\"\n","level":"info"}
+{"message":"::1 - - [03/Oct/2019:21:12:59 +0800] \"POST /api/v1/user/login HTTP/1.1\" 200 286 \"http://localhost:3003/register\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36\"\n","level":"info"}
+{"message":"::1 - - [03/Oct/2019:21:13:29 +0800] \"PUT /api/v1/user/me?&fullname=Kevin%20Soe&password=password HTTP/1.1\" 200 563 \"http://localhost:3003/\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36\"\n","level":"info"}
+{"message":"::c - - [03/Oct/2019:21:14:12 +0800] success delete","level":"info"}
+{"message":"::1 - - [03/Oct/2019:21:14:12 +0800] \"DELETE /api/v1/user/me HTTP/1.1\" 200 237 \"http://localhost:3003/\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36\"\n","level":"info"}
+{"message":"::c - - [03/Oct/2019:21:14:35 +0800] Username User4 at Company E-Corp not found","level":"error"}
+{"message":"::1 - - [03/Oct/2019:21:14:35 +0800] \"POST /api/v1/user/login HTTP/1.1\" 400 67 \"http://localhost:3003/login\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36\"\n","level":"info"}
+{"message":"::c - - [03/Oct/2019:21:16:40 +0800] User is registered--{\"_id\":\"5d95f4b832e38d11debec7e2\",\"company\":\"E-Corp\",\"username\":\"User4\",\"fullname\":\"Test User\",\"password\":\"$2a$10$aqX99JRcm4djSPXadEj3rus8hc3zE4s3GRTjUfH4W8c.n5/ePp7Nq\",\"__v\":0}","level":"info"}
+{"message":"::1 - - [03/Oct/2019:21:16:40 +0800] \"POST /api/v1/user/register HTTP/1.1\" 200 177 \"http://localhost:3003/register\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36\"\n","level":"info"}
+{"message":"::1 - - [03/Oct/2019:21:16:40 +0800] \"POST /api/v1/user/login HTTP/1.1\" 200 286 \"http://localhost:3003/register\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36\"\n","level":"info"}
+{"message":"::1 - - [03/Oct/2019:21:19:38 +0800] \"GET / HTTP/1.1\" 200 30 \"-\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36\"\n","level":"info"}
+{"message":"::1 - - [03/Oct/2019:21:19:38 +0800] \"GET /favicon.ico HTTP/1.1\" 404 41 \"http://localhost:5000/\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36\"\n","level":"info"}
+{"message":"::1 - - [03/Oct/2019:21:19:45 +0800] \"GET /api/v1 HTTP/1.1\" 404 41 \"-\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36\"\n","level":"info"}
+{"message":"::1 - - [03/Oct/2019:21:19:49 +0800] \"GET /api/v1/user HTTP/1.1\" 200 111 \"-\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36\"\n","level":"info"}
+{"message":"::1 - - [03/Oct/2019:21:20:20 +0800] \"POST /api/v1/user/login HTTP/1.1\" 200 285 \"-\" \"PostmanRuntime/7.15.2\"\n","level":"info"}
+{"message":"::1 - - [03/Oct/2019:21:20:46 +0800] \"GET /api/v1/user/me HTTP/1.1\" 200 102 \"-\" \"PostmanRuntime/7.15.2\"\n","level":"info"}
+{"message":"::1 - - [03/Oct/2019:21:21:30 +0800] \"POST /api/v1/user/login HTTP/1.1\" 200 286 \"-\" \"PostmanRuntime/7.15.2\"\n","level":"info"}
+{"message":"::c - - [03/Oct/2019:21:21:39 +0800] Username User6 at Company E-Corp not found","level":"error"}
+{"message":"::1 - - [03/Oct/2019:21:21:39 +0800] \"POST /api/v1/user/login HTTP/1.1\" 400 67 \"-\" \"PostmanRuntime/7.15.2\"\n","level":"info"}
+{"message":"::1 - - [03/Oct/2019:21:21:57 +0800] \"GET /api/v1/user/me HTTP/1.1\" 200 103 \"-\" \"PostmanRuntime/7.15.2\"\n","level":"info"}
+{"message":"::1 - - [03/Oct/2019:21:22:21 +0800] \"PUT /api/v1/user/me?fullname=Test%20Changing HTTP/1.1\" 200 399 \"-\" \"PostmanRuntime/7.15.2\"\n","level":"info"}
+{"message":"::1 - - [03/Oct/2019:21:22:32 +0800] \"GET /api/v1/user/me HTTP/1.1\" 200 107 \"-\" \"PostmanRuntime/7.15.2\"\n","level":"info"}
+{"message":"::c - - [03/Oct/2019:21:24:07 +0800] Username User1 at Company D-Corp already exists","level":"error"}
+{"message":"::1 - - [03/Oct/2019:21:24:07 +0800] \"POST /api/v1/user/register HTTP/1.1\" 400 95 \"http://localhost:5000/docs/\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36\"\n","level":"info"}
+{"message":"::1 - - [03/Oct/2019:21:24:31 +0800] \"GET /api/v1/user/me HTTP/1.1\" 401 84 \"http://localhost:5000/docs/\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36\"\n","level":"info"}
+{"message":"::1 - - [03/Oct/2019:21:24:46 +0800] \"GET /api/v1/user/me HTTP/1.1\" 401 84 \"-\" \"PostmanRuntime/7.15.2\"\n","level":"info"}
+{"message":"::1 - - [03/Oct/2019:21:24:58 +0800] \"GET /api/v1/user/me HTTP/1.1\" 200 107 \"http://localhost:5000/docs/\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36\"\n","level":"info"}
+{"message":"::1 - - [03/Oct/2019:21:26:20 +0800] \"GET /api/v1/users HTTP/1.1\" 200 1873 \"-\" \"PostmanRuntime/7.15.2\"\n","level":"info"}
+{"message":"::c - - [03/Oct/2019:21:31:24 +0800] Request Body is not valid--{\"error\":\"VALIDATION_FAILED\",\"message\":{\"company\":\"Company is required\",\"username\":\"Username is required\",\"fullname\":\"Fullname is required\",\"password\":\"Password is required\",\"passwordConfirm\":\"Password needs to be confirmed\"}}","level":"error"}
+{"message":"::1 - - [03/Oct/2019:21:31:24 +0800] \"POST /api/v1/user/register HTTP/1.1\" 400 226 \"-\" \"PostmanRuntime/7.15.2\"\n","level":"info"}
+{"message":"::c - - [03/Oct/2019:21:33:51 +0800] Request Body is not valid--{\"error\":\"VALIDATION_FAILED\",\"message\":{\"fullname\":\"Fullname is required\",\"passwordConfirm\":\"Password needs to be confirmed\"}}","level":"error"}
+{"message":"::1 - - [03/Oct/2019:21:33:51 +0800] \"POST /api/v1/user/register HTTP/1.1\" 400 126 \"-\" \"PostmanRuntime/7.15.2\"\n","level":"info"}
+{"message":"::c - - [03/Oct/2019:21:34:00 +0800] Username User4 at Company E-Corp already exists","level":"error"}
+{"message":"::1 - - [03/Oct/2019:21:34:00 +0800] \"POST /api/v1/user/register HTTP/1.1\" 400 95 \"-\" \"PostmanRuntime/7.15.2\"\n","level":"info"}
+{"message":"::c - - [03/Oct/2019:21:40:51 +0800] Request Query is not valid--{\"error\":\"VALIDATION_FAILED\",\"message\":{\"option\":\"Query parameter 'option' is required to filter\"}}","level":"error"}
+{"message":"::1 - - [03/Oct/2019:21:40:51 +0800] \"GET /api/v1/users/search?method=findOne&fullname=David%20Chang HTTP/1.1\" 400 99 \"-\" \"PostmanRuntime/7.15.2\"\n","level":"info"}
+{"message":"::1 - - [03/Oct/2019:21:41:06 +0800] \"GET /api/v1/users/search?method=findOne&option=vanilla&fullname=David%20Chang HTTP/1.1\" 200 188 \"-\" \"PostmanRuntime/7.15.2\"\n","level":"info"}
+{"message":"::1 - - [03/Oct/2019:21:41:40 +0800] \"GET /api/v1/users/search?method=find&option=vanilla&fullname=Allen%20Toh HTTP/1.1\" 200 207 \"-\" \"PostmanRuntime/7.15.2\"\n","level":"info"}
+{"message":"::1 - - [03/Oct/2019:21:42:13 +0800] \"GET /api/v1/users/search?method=find&option=lodash&fullname=Allen%20Toh HTTP/1.1\" 200 206 \"-\" \"PostmanRuntime/7.15.2\"\n","level":"info"}
+{"message":"::1 - - [03/Oct/2019:21:42:44 +0800] \"GET /api/v1/users/search?method=find&option=lodash&fullname=Kevin%20Goh HTTP/1.1\" 200 206 \"-\" \"PostmanRuntime/7.15.2\"\n","level":"info"}
+{"message":"::1 - - [03/Oct/2019:21:45:00 +0800] \"POST /api/v1/user/login HTTP/1.1\" 200 285 \"http://localhost:3003/login\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36\"\n","level":"info"}
+{"message":"::c - - [03/Oct/2019:21:46:03 +0800] Request Body is not valid--{\"error\":\"VALIDATION_FAILED\",\"message\":{\"password\":\"Password is required to deactivate your user account.\"}}","level":"error"}
+{"message":"::1 - - [03/Oct/2019:21:46:03 +0800] \"DELETE /api/v1/user/me HTTP/1.1\" 400 108 \"http://localhost:3003/\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36\"\n","level":"info"}
+{"message":"::c - - [03/Oct/2019:21:46:32 +0800] Password incorrect","level":"error"}
+{"message":"::1 - - [03/Oct/2019:21:46:32 +0800] \"DELETE /api/v1/user/me HTTP/1.1\" 400 70 \"http://localhost:3003/\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36\"\n","level":"info"}
+{"message":"::c - - [03/Oct/2019:23:11:51 +0800] Server is listening at 5000","level":"info"}
+{"message":"::1 - - [03/Oct/2019:23:33:53 +0800] \"POST /api/v1/user/login HTTP/1.1\" 200 285 \"http://localhost:3003/login\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36\"\n","level":"info"}
+{"message":"::1 - - [03/Oct/2019:23:35:02 +0800] \"GET /api/v1/users/search?method=find&option=lodash&fullname=Kevin%20Goh HTTP/1.1\" 200 206 \"-\" \"PostmanRuntime/7.15.2\"\n","level":"info"}

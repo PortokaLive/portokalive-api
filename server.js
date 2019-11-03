@@ -7,7 +7,7 @@ const keys = require('./config/keys');
 const routes = require('./routes')
 const responseTime = require('response-time')
 const swaggerUi = require('swagger-ui-express');
-const swaggerDocument = require('./swagger.json');
+const swaggerDocument = require('./swagger.json.js');
 const cors = require('cors')
 
 const app = express();
@@ -40,7 +40,7 @@ app.use((err, req, res, next) => {
   .catch(err => console.log(err));
 
 
-app.get('/',(req, res) => res.send('Welcome to IFSC WEB API Server'));
+app.get('/',(req, res) => res.send('Welcome to OrangeLive WEB API Server'));
 
 app.use('/api',routes)
 
