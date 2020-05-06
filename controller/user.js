@@ -1,4 +1,4 @@
-const User = require('../model/user.js.js')
+const User = require('../model/user.js')
 const logger = require("../logging/logger")
 const isEmpty = require("is-empty")
 const bcrypt = require('bcryptjs')

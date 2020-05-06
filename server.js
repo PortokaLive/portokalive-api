@@ -7,7 +7,7 @@ const keys = require('./config/keys');
 const routes = require('./routes')
 const responseTime = require('response-time')
 const swaggerUi = require('swagger-ui-express');
-const swaggerDocument = require('./swagger.json.js');
+const swaggerDocument = require('./swagger.json');
 const cors = require('cors')
 
 const app = express();

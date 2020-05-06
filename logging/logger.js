@@ -1,4 +1,4 @@
-const logger = require("./winston.js.js");
+const logger = require("./winston.js");
 
 function stream(option,message,data)
 {
