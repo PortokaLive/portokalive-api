@@ -1,11 +1,12 @@
 {
-  "name": "orange-live-api",
+  "name": "portokalive-api",
   "version": "1.0.0",
-  "description": "Orange Live API Server",
+  "description": "PortokaLive API Server",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "server": "nodemon server.js"
+    "start": "nodemon",
+    "build": "rm -rf ./build && tsc"
   },
   "author": "m3yevn",
   "license": "ISC",
@@ -24,8 +25,14 @@
     "morgan": "^1.9.1",
     "response-time": "^2.3.2",
     "swagger-ui-express": "^4.1.1",
+    "typescript": "^3.8.3",
     "validator": "^11.1.0",
     "winston": "^3.2.1",
     "winston-daily-rotate-file": "^4.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^13.13.5",
+    "nodemon": "^2.0.3",
+    "ts-node": "^8.10.1"
   }
 }
