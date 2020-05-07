@@ -51,6 +51,7 @@ const userSchema = new Schema({
 export const User = model("model_users", userSchema);
 
 export class IUser {
+  id: string = "";
   email: string = "";
   password: string = "";
   role: number = 0;

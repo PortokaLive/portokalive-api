@@ -1,10 +1,10 @@
 import { Request, Response } from "express";
 import { GeneralError } from "../errors/GeneralError";
 import { isEmail } from "./HelperValidator";
-import { User } from "../model/User";
+import { User, IUser } from "../model/User";
 import { throwError } from "../utils/throwError";
 
-interface IRegisterUser {
+interface IAuth {
   email: string;
   password: string;
 }
@@ -12,7 +12,7 @@ interface IRegisterUser {
 export const validateBeforeRegister = (
   req: Request,
   res: Response
-): Promise<IRegisterUser> => {
+): Promise<IAuth> => {
   return new Promise((resolve, reject) => {
     const { email, password } = req.body;
     if (!email || !password) {
@@ -47,6 +47,35 @@ export const validateBeforeRegister = (
             email,
             password,
           });
+        });
+    }
+  });
+};
+
+export const validateBeforeLogin = (
+  req: Request,
+  res: Response
+): Promise<IAuth> => {
+  return new Promise((resolve, reject) => {
+    const { email, password } = req.body;
+    if (!email || !password) {
+      throwError(
+        new GeneralError(400, "Request body is invalid", "BAD_REQUEST"),
+        res
+      );
+    } else {
+      ifUserExists(email)
+        .then(() => {
+          resolve({
+            email,
+            password,
+          });
+        })
+        .catch(() => {
+          throwError(
+            new GeneralError(422, "User does not exists", "NO_RECORD"),
+            res
+          );
         });
     }
   });

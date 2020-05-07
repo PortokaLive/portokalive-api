@@ -27,6 +27,7 @@ const auth = async (req: Request, res: Response, next: NextFunction) => {
       }
       (<IAuthRequest>req).user = user;
       (<IAuthRequest>req).token = token;
+      next();
     } else {
       throw new GeneralError(
         404,
@@ -35,7 +36,7 @@ const auth = async (req: Request, res: Response, next: NextFunction) => {
       );
     }
   } catch (ex) {
-    throwError((<GeneralError>ex),res);
+    throwError(<GeneralError>ex, res);
   }
 };
 
