@@ -32,9 +32,11 @@
   },
   "devDependencies": {
     "@types/app-root-path": "^1.2.4",
+    "@types/bcryptjs": "^2.4.2",
     "@types/cors": "^2.8.6",
     "@types/dotenv": "^8.2.0",
     "@types/express": "^4.17.6",
+    "@types/is-empty": "^1.2.0",
     "@types/jsonwebtoken": "^8.3.9",
     "@types/mongoose": "^5.7.15",
     "@types/morgan": "^1.9.0",
