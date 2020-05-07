@@ -10,7 +10,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
 app.options("*", cors());
 app.use(bodyParser.json());
-app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
+app.use((err: Error, _: Request, res: Response, next: NextFunction) => {
   if (err) {
     console.log("Invalid Request data");
     res.json({ error: err, message: err.message });
@@ -21,7 +21,7 @@ app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
 
 mongoose
   .connect(keys.mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(() => console.log("MongoDB successfully connected"))
+  .then(() => console.log("MongoDB successfully connected."))
   .catch((err) => console.error(err));
 
 app.get("/", (_, res) => res.send("Welcome to OrangeLive WEB API Server"));

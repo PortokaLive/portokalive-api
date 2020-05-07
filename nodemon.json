@@ -1,6 +1,8 @@
 {
-  "watch": ["src"],
+  "watch": [
+    "src"
+  ],
   "ext": ".ts,.js",
   "ignore": [],
-  "exec": "ts-node ./src/server.ts --nolazy --inspect"
+  "exec": "node --inspect-brk -r ts-node/register ./src/server.ts"
 }
