@@ -37,4 +37,4 @@ userSchema.methods.searchByVanilla = function(array,filter){
     });
 }
 
-module.exports = User = mongoose.model("model_users",userSchema);
+export default mongoose.model("model_users",userSchema);

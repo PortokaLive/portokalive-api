@@ -1,5 +1,4 @@
 const User = require('../model/user.js')
-const logger = require("../logging/logger")
 const isEmpty = require("is-empty")
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
@@ -13,14 +12,14 @@ exports.register = (req,res) => {
     try{
         const {error, result, isValid } = validateRegister(req.body);
         if(!isValid){
-        logger.log('error',"Request Body is not valid",error)
+        console.log('error',"Request Body is not valid",error)
         res.status(400).json(error);
         }
         else{
             const {password,passwordConfirm,...findUser} = result;
             User.findOne({...findUser}).then(user => {
                 if (user) {
-                    logger.log('error',`Username ${req.body.username} at Company ${req.body.company} already exists`)
+                    console.log('error',`Username ${req.body.username} at Company ${req.body.company} already exists`)
                     var alertMsg = {alert:`Username ${req.body.username} at Company ${req.body.company} already exists`}
                   return res.status(400).json({error:"INVALID_INPUT",message:alertMsg});
                 } else {
@@ -32,9 +31,9 @@ exports.register = (req,res) => {
                             newUser.password = hash;
                             newUser.save().then(user => {
                                 res.json(user);
-                                logger.log('info','User is registered',user)
+                                console.log('info','User is registered',user)
                             }).catch( err => {
-                                logger.log('error',err)
+                                console.log('error',err)
                                 res.status(400).json({error:"EXCEPTION_CAUGHT",message:err.message})
                             })
                         })
@@ -44,7 +43,7 @@ exports.register = (req,res) => {
         }
     }
     catch(err){
-        logger.log('error',err)
+        console.log('error',err)
         res.status(403).json({error:"EXCEPTION_CAUGHT",message:err.message})
     }
 }
@@ -53,13 +52,13 @@ exports.login = (req,res) => {
     try{
     const {error, result, isValid} = validateLogin(req.body)
     if(!isValid){
-        logger.log('error',"Request Body is not valid",error)
+        console.log('error',"Request Body is not valid",error)
         return res.status(400).json(error)
     } else {
         const {password,...findUser} = result
         User.findOne({...findUser}).select('+password').then( user => {
             if(!user){
-                logger.log('error',`Username ${req.body.username} at Company ${req.body.company} not found`)
+                console.log('error',`Username ${req.body.username} at Company ${req.body.company} not found`)
                     var alertMsg = {alert:`Invalid Credentials`}
                   return res.status(400).json({error:"INVALID_INPUT",message:alertMsg});
             }
@@ -78,7 +77,7 @@ exports.login = (req,res) => {
                           })
                     }
                     else {
-                        logger.log('error',`Password incorrect`)
+                        console.log('error',`Password incorrect`)
                         var alertMsg = {alert:`Invalid Credentials`}
                       return res.status(400).json({error:"INVALID_INPUT",message:alertMsg});
                     }
@@ -88,7 +87,7 @@ exports.login = (req,res) => {
     }
 }
 catch(err){
-    logger.log('error',err)
+    console.log('error',err)
     res.status(403).json({error:"EXCEPTION_CAUGHT",message:err.message})
 }
 }
@@ -97,7 +96,7 @@ exports.updateUser = (req,res) => {
     try{
     const {error, filter,isValid} = validateUpdate(req.query)
     if(!isValid){
-        logger.log('error',"Request Query is not valid",error)
+        console.log('error',"Request Query is not valid",error)
         return res.status(400).json(error)
     } else {
                 const {password,...otherFilter} = filter;
@@ -120,7 +119,7 @@ exports.updateUser = (req,res) => {
                               });
                           })
                         }).catch( err => {
-                            logger.log('error',err)
+                            console.log('error',err)
                             res.status(403).json({error:"EXCEPTION_CAUGHT",message:err.message})
                         })
                     })
@@ -139,14 +138,14 @@ exports.updateUser = (req,res) => {
                           });
                       })
                 }).catch( err => {
-                    logger.log('error',err)
+                    console.log('error',err)
                     res.status(403).json({error:"EXCEPTION_CAUGHT",message:err.message})
                 })
             }
             }
 }
 catch(err){
-    logger.log('error',err)
+    console.log('error',err)
     res.status(403).json({error:"EXCEPTION_CAUGHT",message:err.message})
 }
 }
@@ -155,12 +154,12 @@ exports.deleteUser = (req,res) => {
     try{
     const {error, result, isValid} = validateDelete(req.body)
     if(!isValid){
-        logger.log('error',"Request Body is not valid",error)
+        console.log('error',"Request Body is not valid",error)
         return res.status(400).json(error)
     } else {
         User.findOne({_id:req.user._id}).select('+password').then( user => {
             if(!user){
-                logger.log('error',`Username ${req.body.username} at Company ${req.body.company} not found`)
+                console.log('error',`Username ${req.body.username} at Company ${req.body.company} not found`)
                     var alertMsg = {alert:`Invalid Credentials`}
                   return res.status(400).json({error:"INVALID_INPUT",message:alertMsg});
             }
@@ -168,19 +167,19 @@ exports.deleteUser = (req,res) => {
                 bcrypt.compare(result.password,user.password).then( isMatch => {
                     if(isMatch){
                         user.remove().then( result => {
-                            logger.log('info','success delete')
+                            console.log('info','success delete')
                             res.json({
                                 success:true,
                                 result:user,
                                 message:'User has been deleted'
                             })
                         }).catch( err => {
-                            logger.log('error',err)
+                            console.log('error',err)
                             res.status(403).json({error:"EXCEPTION_CAUGHT",message:err.message})
                         })
                     }
                     else {
-                        logger.log('error',`Password incorrect`)
+                        console.log('error',`Password incorrect`)
                         var alertMsg = {password:`Invalid Credentials`}
                       return res.status(400).json({error:"INVALID_INPUT",message:alertMsg});
                     }
@@ -190,7 +189,7 @@ exports.deleteUser = (req,res) => {
     }
 }
 catch(err){
-    logger.log('error',err)
+    console.log('error',err)
     res.status(403).json({error:"EXCEPTION_CAUGHT",message:err.message})
 }
 }
