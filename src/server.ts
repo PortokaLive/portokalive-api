@@ -5,7 +5,7 @@ import keys from "./config/keys";
 import routes from "./routes";
 import cors from "cors";
 import { handleNotFound } from "./utils/handleNotFound";
-import { handleError } from "./utils/handleError";
+import { handleGeneralError } from "./utils/handleError";
 
 const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -20,7 +20,7 @@ mongoose
 
 app.use("/api", routes);
 app.use("*", handleNotFound);
-app.use(handleError);
+app.use(handleGeneralError);
 
 app.listen(keys.port, () => {
   console.log(`Server is listening at ${keys.port}`);
