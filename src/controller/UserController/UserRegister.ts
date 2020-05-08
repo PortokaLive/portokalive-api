@@ -6,6 +6,7 @@ import { User, IUser } from "../../model/User";
 import { v4 } from "uuid";
 import { throwError } from "../../utils/throwError";
 import { GeneralError } from "../../errors/GeneralError";
+import { sendEmail } from "../../services/EmailService";
 
 export const registerUser = async (req: Request, res: Response) => {
   try {
@@ -20,6 +21,11 @@ export const registerUser = async (req: Request, res: Response) => {
       .save()
       .then(() => {
         throwSuccess("Successfully registered user.", res);
+        sendEmail(
+          "Thank you for registering to PortokaLive.",
+          email,
+          "Please click here to activate your account."
+        );
       })
       .catch((err: Error) => {
         throwError(new GeneralError(500, err.message, err.name), res);
