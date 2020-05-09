@@ -2,8 +2,7 @@
   "version": 2,
   "builds": [
     {
-      "src": "/",
-      "dest": "prod/index.js",
+      "src": "prod/index.js",
       "use": "@now/node-server"
     }
   ],
