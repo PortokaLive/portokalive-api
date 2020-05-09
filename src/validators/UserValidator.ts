@@ -19,37 +19,33 @@ export const validateBeforeRegister = (
   res: Response
 ): Promise<IAuth> => {
   return new Promise((resolve, reject) => {
-    try {
-      const { email, password } = req.body;
-      if (!email || !password) {
-        throw new GeneralError(400, "Request body is invalid", "BAD_REQUEST");
-      } else if (!isEmail(email)) {
-        throw new GeneralError(
-          400,
-          "Email is not a valid email",
-          "INVALID_EMAIL"
-        );
-      } else if (password.length < 8) {
-        throw new GeneralError(
+    const { email, password } = req.body;
+
+    if (!email || !password) {
+      reject(new GeneralError(400, "Request body is invalid", "BAD_REQUEST"));
+    } else if (!isEmail(email)) {
+      reject(
+        new GeneralError(400, "Email is not a valid email", "INVALID_EMAIL")
+      );
+    } else if (password.length < 8) {
+      reject(
+        new GeneralError(
           400,
           "Password needs minimum 8 characters",
           "INVALID_PASSWORD"
-        );
-      } else {
-        ifUserExists(email)
-          .then(() => {
-            throw new GeneralError(422, "User already exists", "INVALID_EMAIL");
-          })
-          .catch(() => {
-            resolve({
-              email,
-              password,
-            });
+        )
+      );
+    } else {
+      ifUserExists(email)
+        .then(() => {
+          reject(new GeneralError(422, "User already exists", "INVALID_EMAIL"));
+        })
+        .catch(() => {
+          resolve({
+            email,
+            password,
           });
-      }
-    } catch (ex) {
-      throwError(ex, res);
-      reject();
+        });
     }
   });
 };
@@ -103,11 +99,11 @@ export const validateBeforeLogin = (
   });
 };
 
-const ifUserExists = (email: string) => {
+const ifUserExists = (email: string): Promise<boolean> => {
   return new Promise((resolve, reject) => {
     User.findOne({ email: email }).then((user) => {
-      if (user) resolve();
-      else reject();
+      if (user) resolve(true);
+      else reject(false);
     });
   });
 };

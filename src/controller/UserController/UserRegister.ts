@@ -38,9 +38,8 @@ export const registerUser = async (req: Request, res: Response) => {
 const doPostRegisterSteps = async (email: string, uuid: string, id: string) => {
   const html = await readHTMLFile("src/emails/RegisterUser_Template.html");
   const payload = {
-    id,
     email,
-    uuid,
+    activation: true,
   };
 
   const activationCode = await signJwt(payload, 600);
