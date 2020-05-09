@@ -8,10 +8,31 @@
   ],
   "routes": [
     {
-      "src": "/api/v1/user/:userId",
+      "src": "/api/v1/user/(?<email>)",
       "dest": "index.js",
       "methods": [
         "GET"
+      ]
+    },
+    {
+      "src": "/api/v1/user/register",
+      "dest": "index.js",
+      "methods": [
+        "POST"
+      ]
+    },
+    {
+      "src": "/api/v1/user/login",
+      "dest": "index.js",
+      "methods": [
+        "POST"
+      ]
+    },
+    {
+      "src": "/api/v1/user/activate",
+      "dest": "index.js",
+      "methods": [
+        "POST"
       ]
     }
   ]
