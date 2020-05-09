@@ -1,7 +1,7 @@
 import express from "express";
 import mongoose from "mongoose";
 import bodyParser from "body-parser";
-import keys from "./config/keys";
+import keys from "./config/AuthKeys";
 import routes from "./routes";
 import cors from "cors";
 import { handleNotFound } from "./utils/handleNotFound";

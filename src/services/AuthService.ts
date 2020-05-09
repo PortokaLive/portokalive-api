@@ -1,6 +1,6 @@
 import bcrypt from "bcryptjs";
 import * as jwt from "jsonwebtoken";
-import keys from "../config/keys";
+import keys from "../config/AuthKeys";
 
 export const generateSalt = (password: string) => {
   return new Promise((resolve, reject) => {
@@ -25,6 +25,17 @@ export const signJwt = (payload: any, expiresIn: number): Promise<string> => {
         reject(error);
       }
       resolve(token);
+    });
+  });
+};
+
+export const verifyJwt = (token: string): Promise<any> => {
+  return new Promise((resolve, reject) => {
+    jwt.verify(token, keys.secretKey, (error, decodedData) => {
+      if (error) {
+        reject(error);
+      }
+      resolve(decodedData);
     });
   });
 };

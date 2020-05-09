@@ -9,45 +9,68 @@ interface IAuth {
   password: string;
 }
 
+interface IAuthActivation {
+  email: string;
+  activationCode: string;
+}
+
 export const validateBeforeRegister = (
   req: Request,
   res: Response
 ): Promise<IAuth> => {
   return new Promise((resolve, reject) => {
-    const { email, password } = req.body;
-    if (!email || !password) {
-      throwError(
-        new GeneralError(400, "Request body is invalid", "BAD_REQUEST"),
-        res
-      );
-    } else if (!isEmail(email)) {
-      throwError(
-        new GeneralError(400, "Email is not a valid email", "INVALID_EMAIL"),
-        res
-      );
-    } else if (password.length < 8) {
-      throwError(
-        new GeneralError(
+    try {
+      const { email, password } = req.body;
+      if (!email || !password) {
+        throw new GeneralError(400, "Request body is invalid", "BAD_REQUEST");
+      } else if (!isEmail(email)) {
+        throw new GeneralError(
+          400,
+          "Email is not a valid email",
+          "INVALID_EMAIL"
+        );
+      } else if (password.length < 8) {
+        throw new GeneralError(
           400,
           "Password needs minimum 8 characters",
           "INVALID_PASSWORD"
-        ),
-        res
-      );
-    } else {
-      ifUserExists(email)
-        .then(() => {
-          throwError(
-            new GeneralError(422, "User already exists", "INVALID_EMAIL"),
-            res
-          );
-        })
-        .catch(() => {
-          resolve({
-            email,
-            password,
+        );
+      } else {
+        ifUserExists(email)
+          .then(() => {
+            throw new GeneralError(422, "User already exists", "INVALID_EMAIL");
+          })
+          .catch(() => {
+            resolve({
+              email,
+              password,
+            });
           });
-        });
+      }
+    } catch (ex) {
+      throwError(ex, res);
+      reject();
+    }
+  });
+};
+
+export const validateBeforeActivate = (
+  req: Request,
+  res: Response
+): Promise<IAuthActivation> => {
+  return new Promise((resolve, reject) => {
+    try {
+      const { email, activationCode } = req.query;
+      if (!email || !activationCode) {
+        throw new GeneralError(400, "Request query is invalid", "BAD_REQUEST");
+      }
+      resolve(<IAuthActivation>{
+        email,
+        activationCode,
+      });
+    } catch (ex) {
+      throwError(ex, res);
+      reject();
     }
   });
 };
@@ -57,26 +80,25 @@ export const validateBeforeLogin = (
   res: Response
 ): Promise<IAuth> => {
   return new Promise((resolve, reject) => {
-    const { email, password } = req.body;
-    if (!email || !password) {
-      throwError(
-        new GeneralError(400, "Request body is invalid", "BAD_REQUEST"),
-        res
-      );
-    } else {
-      ifUserExists(email)
-        .then(() => {
-          resolve({
-            email,
-            password,
+    try {
+      const { email, password } = req.body;
+      if (!email || !password) {
+        throw new GeneralError(400, "Request body is invalid", "BAD_REQUEST");
+      } else {
+        ifUserExists(email)
+          .then(() => {
+            resolve({
+              email,
+              password,
+            });
+          })
+          .catch(() => {
+            throw new GeneralError(422, "User does not exists", "NO_RECORD");
           });
-        })
-        .catch(() => {
-          throwError(
-            new GeneralError(422, "User does not exists", "NO_RECORD"),
-            res
-          );
-        });
+      }
+    } catch (ex) {
+      throwError(ex, res);
+      reject();
     }
   });
 };

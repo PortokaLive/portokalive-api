@@ -1,4 +1,4 @@
-import { Schema, model } from "mongoose";
+import { Schema, model, Document } from "mongoose";
 
 const userSchema = new Schema({
   email: {
@@ -48,9 +48,9 @@ const userSchema = new Schema({
   },
 });
 
-export const User = model("model_users", userSchema);
+export const User = model<IUser>("model_users", userSchema);
 
-export class IUser {
+export class IUser extends Document{
   id: string = "";
   email: string = "";
   password: string = "";
@@ -61,4 +61,5 @@ export class IUser {
   uuid: string = "";
   phone: string = "";
   location: object = {};
+  activated: boolean = false;
 }
