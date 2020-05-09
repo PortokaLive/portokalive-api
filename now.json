@@ -2,35 +2,35 @@
   "version": 2,
   "builds": [
     {
-      "src": "index.js",
+      "src": "prod/index.js",
       "use": "@now/node-server"
     }
   ],
   "routes": [
     {
       "src": "/api/v1/user/(?<email>)",
-      "dest": "index.js",
+      "dest": "prod/index.js",
       "methods": [
         "GET"
       ]
     },
     {
       "src": "/api/v1/user/register",
-      "dest": "index.js",
+      "dest": "prod/index.js",
       "methods": [
         "POST"
       ]
     },
     {
       "src": "/api/v1/user/login",
-      "dest": "index.js",
+      "dest": "prod/index.js",
       "methods": [
         "POST"
       ]
     },
     {
       "src": "/api/v1/user/activate",
-      "dest": "index.js",
+      "dest": "prod/index.js",
       "methods": [
         "POST"
       ]

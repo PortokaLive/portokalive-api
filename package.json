@@ -6,8 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start:watch": "nodemon --",
-    "build": "rm -rf ./build && npx tsc",
-    "start": "node build/server.js"
+    "build": "rm -rf ./prod && npx tsc",
+    "start": "node prod/index.js"
   },
   "author": "m3yevn",
   "license": "ISC",
