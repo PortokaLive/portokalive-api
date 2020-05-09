@@ -1,0 +1,18 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "index.js",
+      "use": "@now/node-server"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/v1/user/:userId",
+      "dest": "index.js",
+      "methods": [
+        "GET"
+      ]
+    }
+  ]
+}

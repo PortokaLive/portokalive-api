@@ -1,0 +1,1 @@
+{"version":3,"file":"throwSuccess.js","sourceRoot":"","sources":["../src/utils/throwSuccess.ts"],"names":[],"mappings":";;AAEa,QAAA,YAAY,GAAG,UAAC,aAAoB,EAAC,GAAa;IAC7D,OAAO,CAAC,GAAG,CAAC,eAAa,aAAe,CAAC,CAAC;IAC1C,GAAG,CAAC,IAAI,CAAC;QACP,MAAM,EAAE,aAAa;KACtB,CAAC,CAAC;AACL,CAAC,CAAC"}
