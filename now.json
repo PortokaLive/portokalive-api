@@ -2,13 +2,21 @@
   "version": 2,
   "builds": [
     {
-      "src": "prod/index.js",
+      "src": "/",
+      "dest": "prod/index.js",
       "use": "@now/node-server"
     }
   ],
   "routes": [
     {
-      "src": "/api/v1/user/(?<email>)",
+      "src": "/api/v1/user/<email>",
+      "dest": "prod/index.js",
+      "methods": [
+        "GET"
+      ]
+    },
+    {
+      "src": "/api/v1/user/hi>",
       "dest": "prod/index.js",
       "methods": [
         "GET"
