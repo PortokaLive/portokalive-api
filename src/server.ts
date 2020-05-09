@@ -22,6 +22,6 @@ app.use("/api", routes);
 app.use("*", handleNotFound);
 app.use(handleGeneralError);
 
-app.listen(keys.port || 80, () => {
-  console.log(`Server is listening at ${keys.port}`);
+app.listen(process.env.PORT, () => {
+  console.log(`Server is listening at ${process.env.PORT}`);
 });

@@ -23,7 +23,7 @@ mongoose_1.default
 app.use("/api", routes_1.default);
 app.use("*", handleNotFound_1.handleNotFound);
 app.use(handleError_1.handleGeneralError);
-app.listen(AuthKeys_1.default.port || 80, function () {
-    console.log("Server is listening at " + AuthKeys_1.default.port);
+app.listen(process.env.PORT, function () {
+    console.log("Server is listening at " + process.env.PORT);
 });
 //# sourceMappingURL=server.js.map
