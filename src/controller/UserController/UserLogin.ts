@@ -4,7 +4,7 @@ import { User } from "../../model/User";
 import bcrypt from "bcryptjs";
 import { throwError } from "../../utils/throwError";
 import { GeneralError } from "../../errors/GeneralError";
-import { signJwt } from "../../utils/signJwt";
+import { signJwt } from "../../services/AuthService";
 
 export const loginUser = async (req: Request, res: Response) => {
   const { email, password } = await validateBeforeLogin(req, res);
@@ -15,7 +15,7 @@ export const loginUser = async (req: Request, res: Response) => {
       res
     );
   }
-  const token = await signJwt(userPayload);
+  const token = await signJwt(userPayload, 31556926);
   res.json({
     result: "SUCCESS",
     token: "Bearer " + token,
