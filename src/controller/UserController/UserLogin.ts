@@ -52,13 +52,19 @@ const findAndComparePassword = (
                 thisUser.activated = user.get("activated");
                 resolve(thisUser);
               }
-              reject();
+              reject(
+                reject(
+                  new GeneralError(401, "Invalid credentials", "INVALID_LOGIN")
+                )
+              );
             })
             .catch((err) => {
-              reject(err);
+              reject(new GeneralError(401, err.message, "INVALID_LOGIN"));
             });
         }
       })
-      .catch(() => {});
+      .catch((err) => {
+        reject(new GeneralError(401, err.message, "INVALID_LOGIN"));
+      });
   });
 };
