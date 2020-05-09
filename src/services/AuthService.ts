@@ -35,6 +35,7 @@ export const verifyJwt = (token: string): Promise<any> => {
       if (error) {
         reject(error);
       }
+      console.log(decodedData);
       resolve(decodedData);
     });
   });

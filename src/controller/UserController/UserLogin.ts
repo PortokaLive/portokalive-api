@@ -14,7 +14,8 @@ export const loginUser = async (req: Request, res: Response) => {
       throw new GeneralError(401, "Invalid credentials", "LOGIN_FAILED");
     }
     if (!userPayload.activated) {
-      const activationCode = await signJwt(userPayload, 600);
+      const activationPayload = { email, activation: true };
+      const activationCode = await signJwt(activationPayload, 600);
       throw new GeneralError(
         403,
         `email=${userPayload.email}&activationCode=${activationCode}`,
@@ -47,9 +48,9 @@ const findAndComparePassword = (
               if (result) {
                 const thisUser = <any>{};
                 thisUser.id = user.id;
-                thisUser.email = user.get("email");
-                thisUser.uuid = user.get("uuid");
-                thisUser.activated = user.get("activated");
+                thisUser.email = user.email;
+                thisUser.uuid = user.uuid;
+                thisUser.activated = user.activated;
                 resolve(thisUser);
               }
               reject(

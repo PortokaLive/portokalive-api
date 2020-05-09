@@ -24,8 +24,8 @@ export const registerUser = async (req: Request, res: Response) => {
     new User(newUserModel)
       .save()
       .then(() => {
-        throwSuccess("Successfully registered user.", res);
         doPostRegisterSteps(email, newUserModel.uuid, newUserModel.id);
+        throwSuccess("Please check your email for account activation.", res);
       })
       .catch((err: Error) => {
         throw new GeneralError(500, err.message, err.name);
@@ -66,7 +66,16 @@ export const activateUser = async (req: Request, res: Response) => {
       } else {
         user.activated = true;
         user.save();
-        throwSuccess("Successfully activated user.", res);
+        const thisUser = <any>{};
+        thisUser.id = user.id;
+        thisUser.email = user.email;
+        thisUser.uuid = user.uuid;
+        thisUser.activated = user.activated;
+        const token = await signJwt(thisUser, 31556926);
+        res.json({
+          result: "SUCCESS",
+          token: "Bearer " + token,
+        });
       }
     }
   } catch (ex) {

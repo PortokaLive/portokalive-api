@@ -56,7 +56,7 @@ export const validateBeforeActivate = (
 ): Promise<IAuthActivation> => {
   return new Promise((resolve, reject) => {
     try {
-      const { email, activationCode } = req.query;
+      const { email, activationCode } = req.body;
       if (!email || !activationCode) {
         throw new GeneralError(400, "Request query is invalid", "BAD_REQUEST");
       }
@@ -76,25 +76,20 @@ export const validateBeforeLogin = (
   res: Response
 ): Promise<IAuth> => {
   return new Promise((resolve, reject) => {
-    try {
-      const { email, password } = req.body;
-      if (!email || !password) {
-        throw new GeneralError(400, "Request body is invalid", "BAD_REQUEST");
-      } else {
-        ifUserExists(email)
-          .then(() => {
-            resolve({
-              email,
-              password,
-            });
-          })
-          .catch(() => {
-            throw new GeneralError(422, "User does not exists", "NO_RECORD");
+    const { email, password } = req.body;
+    if (!email || !password) {
+      throw new GeneralError(400, "Request body is invalid", "BAD_REQUEST");
+    } else {
+      ifUserExists(email)
+        .then(() => {
+          resolve({
+            email,
+            password,
           });
-      }
-    } catch (ex) {
-      throwError(ex, res);
-      reject();
+        })
+        .catch(() => {
+          reject(new GeneralError(422, "User does not exists", "NO_RECORD"));
+        });
     }
   });
 };
