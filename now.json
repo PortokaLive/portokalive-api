@@ -15,7 +15,7 @@
       ]
     },
     {
-      "src": "/api/v1/user/hi>",
+      "src": "/api/v1/user/hi",
       "dest": "prod/index.js",
       "methods": [
         "GET"
