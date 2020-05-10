@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import { GeneralError } from "../errors/GeneralError";
 import { isEmail } from "./HelperValidator";
-import { User, IUser } from "../model/User";
+import { User } from "../model/User";
 import { throwError } from "../utils/throwError";
 
 interface IAuth {
@@ -88,7 +88,7 @@ export const validateBeforeLogin = (
           });
         })
         .catch(() => {
-          reject(new GeneralError(422, "User does not exists", "NO_RECORD"));
+          reject(new GeneralError(422, "Invalid credentials", "INVALID_LOGIN"));
         });
     }
   });

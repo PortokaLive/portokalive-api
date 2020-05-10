@@ -1,19 +1,22 @@
 <html>
-<body
-  style="background-color: whitesmoke;display: flex;flex-direction: row;justify-content: center;align-items: center;height: 80vh;">
-  <article style="width:80vw;height:50vh;padding:20px;background-color: white; border-radius: 12px;box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);">
+
+<body id={{uuid}}
+  style="padding:30px; background-color: whitesmoke;display: flex;flex-direction: row;justify-content: start;align-items: center;height: 50vh;">
+  <article
+    style="width:45vw;padding:20px;background-color: white; border-radius: 12px;box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);">
     <h1 style="font-weight: bold;">Thank you for registering to
       <span style="color:orange">Portoka</span>Live</h1>
     <div style="margin-top: 10px;">
       <p>Before you can enjoy our live-streaming platform,<br />
         please click
-        <a href="https://portokalive.now.sh/activate-account?email={{email}}&activationCode={{activationCode}}">
+        <a href="{{url}}activate-account?email={{email}}&activationCode={{activationCode}}">
           here</a> to activate your account.</p>
       <p>This link is only valid for 10 minutes.</p>
     </div>
     <footer style="margin-top: 10px;">
       <h4>Regards,<br />
         <a href="https://github.com/m3yevn">Kevin@PortokaLive</a></h4>
+      <small>Sent at {{time}}</small>
     </footer>
   </article>
 </body>

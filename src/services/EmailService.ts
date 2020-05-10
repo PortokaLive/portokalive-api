@@ -43,7 +43,7 @@ export const sendEmailText = (subject: string, to: string, text: string) => {
   mail
     .sendMail(mailObject)
     .then((result) => {
-      console.log(result);
+      console.log("[SUCCESS] Activation email is sent.");
     })
     .catch((err) => {
       console.error(err);

@@ -8,9 +8,15 @@ import { v4 } from "uuid";
 import { throwError } from "../../utils/throwError";
 import { GeneralError } from "../../errors/GeneralError";
 import { sendEmailHTML } from "../../services/EmailService";
-import { generateSalt, signJwt, verifyJwt } from "../../services/AuthService";
+import {
+  generateSalt,
+  signJwt,
+  verifyJwt,
+  generateUUID,
+} from "../../services/AuthService";
 import { throwSuccess } from "../../utils/throwSuccess";
 import { readHTMLFile, fillTemplate } from "../../services/FileService";
+import { getClientUrl } from "../../services/EnvironmentService";
 
 export const registerUser = async (req: Request, res: Response) => {
   try {
@@ -43,9 +49,14 @@ const doPostRegisterSteps = async (email: string, uuid: string, id: string) => {
   };
 
   const activationCode = await signJwt(payload, 600);
+  const url = getClientUrl();
+  const time = new Date().toLocaleString();
   const registerTemplateReplacement = {
     email,
     activationCode,
+    url,
+    time,
+    uuid: generateUUID(),
   };
 
   const template = fillTemplate(html, registerTemplateReplacement);
@@ -56,13 +67,13 @@ export const activateUser = async (req: Request, res: Response) => {
   try {
     const { email, activationCode } = await validateBeforeActivate(req, res);
     const { activation } = await verifyJwt(activationCode).catch(() => {
-      throw new GeneralError(400, "Activation code is invalid", "BAD_REQUEST");
+      throw new GeneralError(400, "Invalid activation", "BAD_REQUEST");
     });
 
     if (!!activation) {
       const user = await User.findOne({ email }).select("+activated");
       if (!user) {
-        throw new GeneralError(404, "User not found", "NO_RECORD");
+        throw new GeneralError(400, "Invalid activation", "BAD_REQUEST");
       } else {
         user.activated = true;
         user.save();
