@@ -5,4 +5,3 @@ logs/
 src/.env
 src/.DS_Store
 build
-yarn.lock
