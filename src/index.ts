@@ -18,7 +18,7 @@ mongoose
   .then(() => console.log("MongoDB successfully connected."))
   .catch((err) => console.error(err));
 
-app.use("/", express.static(path.join(__dirname, "static")));
+app.use("/", express.static("static"));
 app.use("/api", cors(corsOptions), routes);
 app.use("*", handleNotFound);
 app.use(handleGeneralError);
