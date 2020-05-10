@@ -30,7 +30,7 @@ export const registerUser = async (req: Request, res: Response) => {
     new User(newUserModel)
       .save()
       .then(() => {
-        doPostRegisterSteps(email, newUserModel.uuid, newUserModel.id);
+        doPostRegisterSteps(email);
         throwSuccess("Please check your email for account activation.", res);
       })
       .catch((err: Error) => {
@@ -41,7 +41,7 @@ export const registerUser = async (req: Request, res: Response) => {
   }
 };
 
-const doPostRegisterSteps = async (email: string, uuid: string, id: string) => {
+const doPostRegisterSteps = async (email: string) => {
   const html = await readHTMLFile("src/emails/RegisterUser_Template.html");
   const payload = {
     email,
