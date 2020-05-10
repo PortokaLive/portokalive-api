@@ -6,11 +6,11 @@ import routes from "./routes";
 import cors from "cors";
 import { handleNotFound } from "./utils/handleNotFound";
 import { handleGeneralError } from "./utils/handleError";
+import corsOptions from "./config/CorsOptions";
+import path from "path";
 
 const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cors());
-app.options("*", cors());
 app.use(bodyParser.json());
 
 mongoose
@@ -18,7 +18,8 @@ mongoose
   .then(() => console.log("MongoDB successfully connected."))
   .catch((err) => console.error(err));
 
-app.use("/api", routes);
+app.use("/", express.static(path.join(__dirname, "static")));
+app.use("/api", cors(corsOptions), routes);
 app.use("*", handleNotFound);
 app.use(handleGeneralError);
 
