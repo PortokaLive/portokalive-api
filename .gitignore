@@ -4,5 +4,5 @@ package-lock.json
 logs/
 src/.env
 src/.DS_Store
-
-.vercel
+build
+yarn.lock
