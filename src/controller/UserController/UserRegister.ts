@@ -41,6 +41,30 @@ export const registerUser = async (req: Request, res: Response) => {
   }
 };
 
+export const sendActivationEmail = async (req: Request, res: Response) => {
+  try {
+    const { email } = req.body;
+    const user = await User.findOne({ email }).select("+activated");
+
+    if (user?.activated) {
+      throwError(
+        new GeneralError(403, "Already activated", "INVALID_ACTIVATION"),
+        res
+      );
+    } else {
+      doPostRegisterSteps(email)
+        .then(() => {
+          throwSuccess(`Another email has been sent to ${email}`, res);
+        })
+        .catch((err) => {
+          throw new GeneralError(500, err.message, err.name);
+        });
+    }
+  } catch (ex) {
+    throwError(ex, res);
+  }
+};
+
 const doPostRegisterSteps = async (email: string) => {
   const html = await readHTMLFile("src/emails/RegisterUser_Template.html");
   const payload = {
@@ -61,6 +85,7 @@ const doPostRegisterSteps = async (email: string) => {
 
   const template = fillTemplate(html, registerTemplateReplacement);
   sendEmailHTML("Please activate your account", email, template);
+  return;
 };
 
 export const activateUser = async (req: Request, res: Response) => {
