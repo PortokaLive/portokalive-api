@@ -7,6 +7,7 @@ import {
 } from "../../controller/UserController/UserRegister";
 import { loginUser } from "../../controller/UserController/UserLogin";
 import { getUser } from "../../controller/UserController/UserCRUD";
+import { sendSuccessEmpty } from "../../utils/throwSuccess";
 
 const router = Router();
 
@@ -15,5 +16,6 @@ router.post("/login", loginUser);
 router.post("/activate", activateUser);
 router.post("/sendActivationEmail", sendActivationEmail);
 router.get("/:email", AuthGuard, getUser);
+router.post("/validateToken", AuthGuard, sendSuccessEmpty);
 
 export default router;
