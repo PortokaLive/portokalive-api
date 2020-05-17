@@ -9,6 +9,9 @@ export const getStream = async (req: Request, res: Response) => {
     "Cache-Control": "no-cache",
   });
 
+  console.log(req.query.token);
+  console.log(ENV?.mediaServer);
+
   const streamEvent = new EventSource(
     `${ENV?.mediaServer}sse/streams?token=${req.query.token}`
   );

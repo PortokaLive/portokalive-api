@@ -2,8 +2,8 @@ const {
   ENVIRONMENT: env,
   PROD_CLIENT_URL: prodUrl,
   DEV_CLIENT_URL: devUrl,
-  PROD_MEDIASERVER_URL: prodMediaServer,
-  DEV_MEDIASERVER_URL: devMediaServer,
+  PROD_MEDIA_SERVER_URL: prodMediaServer,
+  DEV_MEDIA_SERVER_URL: devMediaServer,
 } = process.env;
 
 const getEnvironment = () => {
