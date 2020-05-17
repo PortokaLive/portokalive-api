@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import EventSource from "eventsource";
-import { IAuthRequest } from "../../config/AuthGuard";
+import { ENV } from "../../services/EnvironmentService";
 
 export const getStream = async (req: Request, res: Response) => {
   res.writeHead(200, {
@@ -10,8 +10,7 @@ export const getStream = async (req: Request, res: Response) => {
   });
 
   const streamEvent = new EventSource(
-    "http://178.128.97.123:8000/sse/streams?token=" +
-      (req as IAuthRequest).token
+    `${ENV?.mediaServer}sse/streams?token=${req.query.token}`
   );
 
   streamEvent.onmessage = (event) => {

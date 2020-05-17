@@ -16,7 +16,7 @@ import {
 } from "../../services/AuthService";
 import { throwSuccess } from "../../utils/throwSuccess";
 import { readHTMLFile, fillTemplate } from "../../services/FileService";
-import { getClientUrl } from "../../services/EnvironmentService";
+import { ENV } from "../../services/EnvironmentService";
 
 export const registerUser = async (req: Request, res: Response) => {
   try {
@@ -73,7 +73,7 @@ const doPostRegisterSteps = async (email: string) => {
   };
 
   const activationCode = await signJwt(payload, 600);
-  const url = getClientUrl();
+  const url = ENV?.clientUrl;
   const time = new Date().toLocaleString();
   const registerTemplateReplacement = {
     email,

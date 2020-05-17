@@ -2,19 +2,27 @@ const {
   ENVIRONMENT: env,
   PROD_CLIENT_URL: prodUrl,
   DEV_CLIENT_URL: devUrl,
+  PROD_MEDIASERVER_URL: prodMediaServer,
+  DEV_MEDIASERVER_URL: devMediaServer,
 } = process.env;
 
-export const getEnvironment = () => {
+const getEnvironment = () => {
   return env || "DEV";
 };
 
-export const getClientUrl = () => {
-  switch (env) {
+const getVariables = () => {
+  switch (getEnvironment()) {
     case "PROD":
-      return prodUrl;
+      return {
+        clientUrl: prodUrl,
+        mediaServer: prodMediaServer,
+      };
     case "DEV":
-      return devUrl;
-    default:
-      return devUrl;
+      return {
+        clientUrl: devUrl,
+        mediaServer: devMediaServer,
+      };
   }
 };
+
+export const ENV = getVariables();
