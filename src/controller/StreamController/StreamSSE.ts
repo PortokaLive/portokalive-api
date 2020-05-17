@@ -17,9 +17,4 @@ export const getStream = async (req: Request, res: Response) => {
   streamEvent.onmessage = (event) => {
     res.write(`data: ${event.data}\n\n`);
   };
-
-  streamEvent.onerror = (event) => {
-    res.write(`data: ${event.data}\n\n`);
-    res.end();
-  };
 };
