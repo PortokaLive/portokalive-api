@@ -4,5 +4,5 @@
   ],
   "ext": ".ts,.js",
   "ignore": [],
-  "exec": "node --inspect-brk --nolazy -r ts-node/register ./src/index.ts"
+  "exec": "node --inspect=5859 --inspect-brk --nolazy -r ts-node/register ./src/index.ts"
 }

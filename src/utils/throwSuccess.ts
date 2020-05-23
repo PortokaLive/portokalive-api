@@ -6,7 +6,3 @@ export const throwSuccess = (resultMessage: string, res: Response) => {
     result: resultMessage,
   });
 };
-
-export const sendSuccessEmpty = (req: Request, res: Response) => {
-  res.json({});
-};
