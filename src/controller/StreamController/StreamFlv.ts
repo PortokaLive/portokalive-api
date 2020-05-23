@@ -33,11 +33,11 @@ export const getStreamFlv = (req: Request, res: Response) => {
         res.write(data);
       });
       response.on("error", (error) => {
-        throwError(new GeneralError(500, error.message, error.name), res);
+        res.end();
       });
       setTimeout(() => {
         response.destroy();
-      },15000);
+      }, 15000);
     }
   });
 };
