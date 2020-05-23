@@ -5,7 +5,19 @@ import { throwError } from "../../utils/throwError";
 import { GeneralError } from "../../errors/GeneralError";
 
 export const getStreamFlv = (req: Request, res: Response) => {
-  const url = ENV?.mediaServer + "live/" + req.params.streamerId;
+  if (!req.query.token) {
+    throwError(
+      new GeneralError(403, "Token is empty", "INVALID_AUTHENTICATION"),
+      res
+    );
+    return;
+  }
+  const url =
+    ENV?.mediaServer +
+    "live/" +
+    req.params.streamerId +
+    "?token=" +
+    req.query.token;
   http.get(url, (response) => {
     if (response.statusCode !== 200) {
       throwError(
@@ -23,6 +35,9 @@ export const getStreamFlv = (req: Request, res: Response) => {
       response.on("error", (error) => {
         throwError(new GeneralError(500, error.message, error.name), res);
       });
+      setTimeout(() => {
+        response.destroy();
+      },10000);
     }
   });
 };
