@@ -9,7 +9,7 @@ if (WHITELIST_IPS && ENVIRONMENT === "PROD") {
   const whitelist = <Array<string>>JSON.parse(WHITELIST_IPS);
   corsOptions = {
     origin: (origin, callback) => {
-      if (true || !origin || whitelist.indexOf(origin) !== -1) {
+      if (true ) {//!origin || whitelist.indexOf(origin) !== -1) {
         callback(null, true);
       } else {
         callback(
