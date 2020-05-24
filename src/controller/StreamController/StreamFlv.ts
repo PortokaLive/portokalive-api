@@ -37,7 +37,7 @@ export const getStreamFlv = (req: Request, res: Response) => {
       });
       setTimeout(() => {
         response.destroy();
-      }, 15000);
+      }, 65000);
     }
   });
 };
