@@ -1,15 +1,15 @@
 <html>
 
 <body id="{{uuid}}"
-  style="padding:30px; background-color: whitesmoke;display: flex;flex-direction: row;justify-content: start;align-items: center;height: 50vh;">
-  <article
-    style="width:45vw;padding:20px;background-color: white; border-radius: 12px;box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);">
+  style="width:100%;padding:10px; background-color: whitesmoke;display: flex;flex-direction: row;justify-content: start;align-items: center;height: 50vh;">
+  <div
+    style="width:90%;padding:10px;background-color: white; border-radius: 12px;box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);">
     <h1 style="font-weight: bold;">Thank you for registering to
       <span style="color:orange">Portoka</span>Live</h1>
     <div style="margin-top: 10px;">
       <p>Before you can enjoy our live-streaming platform,<br />
         please click
-        <a style="font-size: 16px;" href="{{url}}activate-account?email={{email}}&activationCode={{activationCode}}">
+        <a href="{{url}}activate-account?email={{email}}&activationCode={{activationCode}}">
           here</a> to activate your account.</p>
       <p>This link is only valid for 10 minutes.</p>
     </div>
@@ -18,7 +18,7 @@
         <a href="https://github.com/m3yevn">Kevin@PortokaLive</a></h4>
       <small>Sent at {{time}}</small>
     </footer>
-  </article>
+  </div>
 </body>
 
 </html>
