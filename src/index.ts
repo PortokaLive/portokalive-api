@@ -8,7 +8,6 @@ import { handleNotFound } from "./utils/handleNotFound";
 import { handleGeneralError } from "./utils/handleError";
 import corsOptions from "./config/CorsOptions";
 
-var corsOptionsApp = corsOptions;
 const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
