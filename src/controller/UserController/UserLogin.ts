@@ -8,6 +8,7 @@ import { signJwt } from "../../services/AuthService";
 
 export const loginUser = async (req: Request, res: Response) => {
   try {
+    console.log("Logging the user...");
     const { email, password } = await validateBeforeLogin(req, res);
     const userPayload = await findAndComparePassword(email, password);
     if (!userPayload) {
@@ -22,7 +23,10 @@ export const loginUser = async (req: Request, res: Response) => {
         "ACTIVATION_REQUIRED"
       );
     }
-    const token = await signJwt(userPayload, 31556926);
+    const token = await signJwt(
+      { ...userPayload, api_key: process.env.API_VIDEO_API_KEY },
+      31556926
+    );
     res.json({
       result: "SUCCESS",
       token: "Bearer " + token,
