@@ -22,6 +22,6 @@ app.use("/api", cors(corsOptions), routes);
 app.use("*", handleNotFound);
 app.use(handleGeneralError);
 
-app.listen(process.env.PORT, () => {
-  console.log(`Server is listening at ${process.env.PORT}`);
+app.listen(keys.port, () => {
+  console.log(`Server is listening at ${keys.port}`);
 });
