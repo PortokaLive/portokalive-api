@@ -46,11 +46,15 @@ const userSchema = new Schema({
     type: Object,
     required: false,
   },
+  liveStreamId: {
+    type: String,
+    required: false,
+  },
 });
 
 export const User = model<IUser>("model_users", userSchema);
 
-export class IUser extends Document{
+export class IUser extends Document {
   id: string = "";
   email: string = "";
   password: string = "";
@@ -62,4 +66,5 @@ export class IUser extends Document{
   phone: string = "";
   location: object = {};
   activated: boolean = false;
+  liveStreamId: string = "";
 }

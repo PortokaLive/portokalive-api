@@ -17,15 +17,20 @@ import {
 import { throwSuccess } from "../../utils/throwSuccess";
 import { readHTMLFile, fillTemplate } from "../../services/FileService";
 import { ENV } from "../../services/EnvironmentService";
+import { createLiveStream } from "../../services/LiveService";
 
 export const registerUser = async (req: Request, res: Response) => {
   try {
     const { email, password } = await validateBeforeRegister(req, res);
     const hashedPassword = await generateSalt(password);
+
+    const name = email.split("@")[0];
+    const liveStreamId = await createLiveStream(name);
     const newUserModel = <IUser>{
       email,
       password: hashedPassword,
       uuid: v4(),
+      liveStreamId,
     };
     new User(newUserModel)
       .save()

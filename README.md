@@ -5,11 +5,6 @@
 <p>Version 1.0.0</p>
 <p>by m3yevn</p>
 
-<hr/>
-This project is awesome!
-
-This project is well tested!
-
 ## ⭐ Public Url
 
 This project is not published to public!

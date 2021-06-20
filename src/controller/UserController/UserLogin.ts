@@ -55,6 +55,7 @@ const findAndComparePassword = (
                 thisUser.email = user.email;
                 thisUser.uuid = user.uuid;
                 thisUser.activated = user.activated;
+                thisUser.liveStreamId = user.liveStreamId;
                 resolve(thisUser);
               }
               reject(
