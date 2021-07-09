@@ -112,6 +112,7 @@ export const activateUser = async (req: Request, res: Response) => {
         thisUser.email = user.email;
         thisUser.uuid = user.uuid;
         thisUser.activated = user.activated;
+        thisUser.liveStreamId = user.liveStreamId;
         const token = await signJwt(thisUser, 31556926);
         res.json({
           result: "SUCCESS",
