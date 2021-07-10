@@ -1,21 +1,27 @@
-# 🔥Portokalive-api🔥
+# Portokalive-api
 
 **PortokaLive API Server**
 
 <p>Version 1.0.0</p>
 <p>by m3yevn</p>
 
+<hr/>
+
+
+
+
+
 ## ⭐ Public Url
 
-This project is not published to public!
+N.A
 
 ## 📚 Tech Stack
 
-This project is using awesome tech stacks!
+N.A
 
 ## 📸 Screenshots
 
-This project does not have screenshots available.
+N.A
 
 ## 📜 Scripts
 
@@ -24,6 +30,7 @@ test : $ echo "Error: no test specified" && exit 1
 start:watch : $ nodemon --
 build : $ rm -rf ./build && npx tsc
 start : $ node build/index.js
+dev : $ ts-node ./src/index.ts
 
 ```
 
