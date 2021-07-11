@@ -1,5 +1,6 @@
 import mailer from "nodemailer";
 import { MailOptions } from "nodemailer/lib/json-transport";
+import logger from "../logger";
 
 const { EMAIL_SENDER, EMAIL_SENDER_PASSWORD } = process.env;
 
@@ -24,13 +25,12 @@ export const sendEmailHTML = (subject: string, to: string, html: string) => {
   mail
     .sendMail(mailObject)
     .then((result) => {
-      console.log("[SUCCESS] Activation email is sent.");
+      logger.log("[SUCCESS] Activation email is sent.");
     })
     .catch((err) => {
-      console.error(err);
+      logger.error(err);
     });
 };
-
 
 export const sendEmailText = (subject: string, to: string, text: string) => {
   const mailObject = <MailOptions>{
@@ -43,9 +43,9 @@ export const sendEmailText = (subject: string, to: string, text: string) => {
   mail
     .sendMail(mailObject)
     .then((result) => {
-      console.log("[SUCCESS] Activation email is sent.");
+      logger.log("[SUCCESS] Activation email is sent.");
     })
     .catch((err) => {
-      console.error(err);
+      logger.error(err);
     });
 };

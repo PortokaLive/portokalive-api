@@ -5,10 +5,11 @@ import bcrypt from "bcryptjs";
 import { throwError } from "../../utils/throwError";
 import { GeneralError } from "../../errors/GeneralError";
 import { signJwt } from "../../services/AuthService";
+import logger from "../../logger";
 
 export const loginUser = async (req: Request, res: Response) => {
   try {
-    console.log("Logging the user...");
+    logger.log("Logging the user...");
     const { email, password } = await validateBeforeLogin(req, res);
     const userPayload = await findAndComparePassword(email, password);
     if (!userPayload) {
